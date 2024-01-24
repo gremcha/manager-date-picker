@@ -1,0 +1,200 @@
+:root {
+    --day-in-range: #93979b;
+    --side-day: #1e1e1e;
+    --text-in-range: white;
+}
+
+/* :root[data-theme="dark"] {
+  --day-in-range: #93979b;
+  --side-day: #1e1e1e;
+  --text-in-range: white;
+
+} */
+
+.react-datepicker__day--outside-month {
+    pointer-events: none;
+}
+.react-datepicker__day--outside-month::before {
+    content: '';
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    height: 2rem;
+    width: 2rem;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.react-datepicker__week {
+    margin-bottom: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(7, 2rem);
+    height: 2rem;
+}
+
+.react-datepicker__day-names {
+    display: grid;
+    grid-template-columns: repeat(7, 2rem);
+    grid-gap: 0;
+}
+
+.react-datepicker__month {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.react-datepicker__day--in-range {
+    color: var(--text-in-range);
+    background-color: var(--day-in-range);
+
+    height: 2rem;
+    width: 2rem;
+}
+
+.react-datepicker__day--in-range.monday,
+.react-datepicker__day--in-range.sunday {
+    position: relative;
+    border-radius: 50px;
+}
+
+.react-datepicker__day--in-range.monday::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    background-color: var(--day-in-range);
+    height: 2rem;
+    width: 2rem;
+    z-index: -1;
+}
+
+.react-datepicker__day--in-range.sunday::before {
+    content: '';
+    position: absolute;
+    left: -50%;
+    background-color: var(--day-in-range);
+    height: 2rem;
+    width: 2rem;
+    z-index: -2;
+}
+
+/* .react-datepicker__day--in-range::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  height: 2rem;
+  width: 2rem;
+} */
+
+.react-datepicker__day {
+    display: flex;
+    width: 2.1rem;
+    align-items: center;
+    justify-content: center;
+    margin-left: -1px;
+}
+
+.react-datepicker__day--selected {
+    content: '';
+    z-index: 2;
+    background-color: var(--side-day);
+    border-radius: 50px;
+    color: var(--text-in-range);
+    height: 2rem;
+    width: 2rem;
+}
+
+.react-datepicker__day--disabled {
+    color: #ccc;
+}
+
+.react-datepicker__aria-live {
+    display: none;
+    width: 100%;
+}
+
+.react-datepicker__navigation {
+    /* display: none; */
+    width: 100%;
+}
+
+.react-datepicker__day--range-start {
+    position: relative;
+    color: var(--text-in-range);
+    height: 2rem;
+    width: 2rem;
+    z-index: auto;
+    background-color: var(--side-day);
+    border-radius: 50px;
+}
+.react-datepicker__day--range-start::before {
+    content: '';
+    position: absolute;
+    background-color: var(--day-in-range);
+    left: 50%;
+    z-index: -1;
+    height: 2rem;
+    width: 2rem;
+}
+
+.react-datepicker__day--range-end {
+    position: relative;
+    color: var(--text-in-range);
+    height: 2rem;
+    width: 2rem;
+    z-index: auto;
+    background-color: var(--side-day);
+    border-radius: 50px;
+}
+.react-datepicker__day--range-end::before {
+    content: '';
+    position: absolute;
+    background-color: var(--day-in-range);
+    right: 50%;
+    z-index: -1;
+    height: 2rem;
+    width: 2rem;
+}
+
+.react-datepicker__day--range-start.sunday::before {
+    content: '';
+    background-color: #00000000 !important;
+}
+
+.react-datepicker__day--range-end.monday::before {
+    content: '';
+    background-color: #00000000 !important;
+}
+
+.react-datepicker__day--range-end.react-datepicker__day--range-start::before {
+    content: '';
+    background-color: #00000000 !important;
+}
+
+.react-datepicker__day--today {
+}
+.react-datepicker__month-dropdown {
+    display: grid;
+    grid-template-columns: repeat(3, 6.5rem);
+}
+
+.react-datepicker__month-option--selected {
+    display: none;
+}
+
+.react-datepicker__month-option--selected_month,
+.react-datepicker__month-read-view--selected-month {
+    background-color: aquamarine;
+}
+
+.main {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.sheet {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+}
