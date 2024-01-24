@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/manager-date-picker/static/css/main.f633c98a.css",
+    "main.js": "/manager-date-picker/static/js/main.2de3fdd3.js",
+    "static/js/787.3491fe01.chunk.js": "/manager-date-picker/static/js/787.3491fe01.chunk.js",
+    "index.html": "/manager-date-picker/index.html",
+    "main.f633c98a.css.map": "/manager-date-picker/static/css/main.f633c98a.css.map",
+    "main.2de3fdd3.js.map": "/manager-date-picker/static/js/main.2de3fdd3.js.map",
+    "787.3491fe01.chunk.js.map": "/manager-date-picker/static/js/787.3491fe01.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f633c98a.css",
+    "static/js/main.2de3fdd3.js"
+  ]
+}
