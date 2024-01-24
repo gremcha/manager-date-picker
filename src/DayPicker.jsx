@@ -2,7 +2,6 @@ import { endOfMonth, format, startOfMonth, subMonths } from 'date-fns';
 import React, { useEffect, useState } from 'react';
 import ReactDatePicker from 'react-datepicker';
 import './style.css';
-import { ru } from 'date-fns/locale';
 
 function getRoundDay(date) {
     const mondays = [];
@@ -19,25 +18,27 @@ function getRoundDay(date) {
     return { mondays, sundays };
 }
 
-export default function DayPicker({ startDate, setStartDate, endDate, setEndDate, date, setDate }) {
+export default function DayPicker({ startDate, setStartDate, endDate, setEndDate }) {
     function onChangeDate(dates) {
+        console.log('onChangeDates');
         const [start, end] = dates;
         setStartDate(start);
         setEndDate(end);
     }
-
-    let { mondays, sundays } = { mondays: [], sundays: [] };
+    const [mondays, setMondays] = useState([]);
+    const [sundays, setSundays] = useState([]);
     useEffect(() => {
-        ({ mondays, sundays } = getRoundDay(startDate));
+        const { mondays, sundays } = getRoundDay(startDate);
+        setMondays(mondays);
+        setSundays(sundays);
     }, []);
-    const changeRounds = (month) => {
-        console.log('month', month);
-        console.log('mondays', mondays);
-        console.log('sundays', sundays);
-        if (month) {
-            ({ mondays, sundays } = getRoundDay(month));
-        }
 
+    const changeRounds = (month) => {
+        if (month) {
+            const { mondays, sundays } = getRoundDay(month);
+            setMondays(mondays);
+            setSundays(sundays);
+        }
         mondays.forEach((n) => {
             const elem = document.getElementsByClassName(`react-datepicker__day--${n}`)[0];
             elem?.classList.add('monday');
