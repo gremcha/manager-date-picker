@@ -1,9 +1,9 @@
-import { endOfDay, format, isEqual, startOfDay, startOfMonth, subDays } from 'date-fns';
+import { endOfDay, endOfWeek, format, isEqual, startOfDay, startOfMonth, subDays } from 'date-fns';
 import React, { useEffect, useState } from 'react';
 import Sheet from 'react-modal-sheet';
 
 import './style.css';
-import DayPicker from './DayPicker';
+import DayPicker from './Enteties/DaysPicker';
 import { ru } from 'date-fns/locale';
 import MonthPicker from './MonthPicker';
 
@@ -47,8 +47,16 @@ function Main() {
     }
 
     function openWeek() {
-        const newStartDate = subDays(new Date(), 6);
-        const newEndDate = new Date();
+        let newStartDate = new Date();
+        let newEndDate = new Date();
+        if (endOfWeek(startDate).getDate() > new Date().getDate()) {
+            newStartDate = subDays(new Date(), 6);
+            newEndDate = new Date();
+        } else {
+            newStartDate = startOfWeek(startDate);
+            newEndDate = endOfWeek(startDate);
+        }
+
         setStartDate(newStartDate);
         setEndDate(newEndDate);
         setDate(() => getDateString(newStartDate, newEndDate, setEndDate));
@@ -56,8 +64,9 @@ function Main() {
     }
 
     function openMonth() {
-        const newStartDate = startOfMonth(new Date());
-        const newEndDate = new Date();
+        const newStartDate = startOfMonth(startDate);
+        const newEndDate =
+            startDate.getMonth() === new Date().getMonth() ? new Date() : endOfMonth(startDate);
         setStartDate(newStartDate);
         setEndDate(newEndDate);
         setDate(() => getDateString(newStartDate, newEndDate, setEndDate, 'm'));

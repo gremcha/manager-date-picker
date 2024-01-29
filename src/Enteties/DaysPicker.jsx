@@ -18,15 +18,16 @@ function getRoundDay(date) {
     return { mondays, sundays };
 }
 
-export default function DayPicker({ startDate, setStartDate, endDate, setEndDate }) {
+export default function DaysPicker({ startDate, setStartDate, endDate, setEndDate }) {
     function onChangeDate(dates) {
-        console.log('onChangeDates');
         const [start, end] = dates;
         setStartDate(start);
         setEndDate(end);
     }
+
     const [mondays, setMondays] = useState([]);
     const [sundays, setSundays] = useState([]);
+
     useEffect(() => {
         const { mondays, sundays } = getRoundDay(startDate);
         setMondays(mondays);
